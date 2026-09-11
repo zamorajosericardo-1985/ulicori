@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Directorio ULICORI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
+  :root{
+    --navy:#173D6C;
+    --navy-deep:#102A4C;
+    --blue-dark:#005B9B;
+    --blue-mid:#1167A6;
+    --blue:#2279BC;
+    --blue-light:#4196D2;
+    --blue-pale:#8BBEE8;
+    --blue-paler:#B2DAF4;
+    --blue-faint:#DFEFFA;
+    --ink:#16232F;
+    --ink-soft:#5B6B78;
+    --line:#D8E6F3;
+    --white:#FFFFFF;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Open Sans', Arial, sans-serif;
+    line-height:1.5;
+  }
+
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 24px 96px;
+  }
+
+  /* ---- Masthead ---- */
+  header.masthead{
+    position:relative;
+    background:var(--navy);
+    color:var(--white);
+    padding:56px 24px 40px;
+    margin-bottom:36px;
+    overflow:hidden;
+  }
+  header.masthead .mast-inner{
+    max-width:932px;
+    margin:0 auto;
+    position:relative;
+    z-index:2;
+  }
+  .blocks{
+    position:absolute;
+    top:0;
+    right:0;
+    width:220px;
+    height:100%;
+    z-index:1;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows:repeat(3, 1fr);
+    opacity:0.9;
+  }
+  .blocks span{display:block;}
+  .blocks span:nth-child(1){background:var(--blue-dark);}
+  .blocks span:nth-child(2){background:var(--navy-deep);}
+  .blocks span:nth-child(3){background:var(--blue-paler);}
+  .blocks span:nth-child(4){background:var(--blue-mid);}
+  .blocks span:nth-child(5){background:var(--blue);}
+  .blocks span:nth-child(6){background:var(--navy-deep);}
+  .blocks span:nth-child(7){background:var(--blue-paler);}
+  .blocks span:nth-child(8){background:var(--blue-light);}
+  .blocks span:nth-child(9){background:var(--blue-dark);}
+
+  .eyebrow-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:10px;
+  }
+  .kicker{
+    font-size:14px;
+    letter-spacing:0.01em;
+    color:var(--blue-paler);
+    font-weight:700;
+  }
+  .count{
+    font-size:13px;
+    color:var(--blue-paler);
+  }
+  h1{
+    font-weight:800;
+    font-size:clamp(30px, 4.5vw, 42px);
+    margin:0 0 10px;
+    color:var(--white);
+    line-height:1.15;
+  }
+  .subtitle{
+    font-size:16px;
+    color:var(--blue-faint);
+    max-width:52ch;
+    font-weight:400;
+  }
+
+  /* ---- Search ---- */
+  .search-bar{
+    position:sticky;
+    top:0;
+    background:var(--white);
+    z-index:10;
+    padding:16px 0 20px;
+    margin-bottom:4px;
+  }
+  .search-bar input{
+    width:100%;
+    padding:14px 18px;
+    font-size:16px;
+    font-family:inherit;
+    background:var(--white);
+    border:1.5px solid var(--blue-paler);
+    border-radius:6px;
+    color:var(--ink);
+    outline:none;
+    transition:border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .search-bar input:focus{
+    border-color:var(--blue-dark);
+    box-shadow:0 0 0 3px var(--blue-faint);
+  }
+  .search-bar input::placeholder{
+    color:#9AAAB8;
+  }
+
+  nav.jumplinks{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 12px;
+    margin-bottom:40px;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+  }
+  nav.jumplinks a{
+    font-size:13px;
+    font-weight:600;
+    color:var(--blue-dark);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:1px;
+    white-space:nowrap;
+  }
+  nav.jumplinks a:hover{
+    border-bottom-color:var(--blue-light);
+  }
+  nav.jumplinks .sep{
+    color:var(--blue-paler);
+  }
+
+  /* ---- Departments ---- */
+  section.dept{
+    margin-bottom:38px;
+    scroll-margin-top:88px;
+  }
+  .dept-head{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:12px;
+    padding-left:12px;
+    border-left:4px solid var(--blue-light);
+  }
+  .dept-head h2{
+    font-weight:700;
+    font-size:20px;
+    color:var(--navy);
+    margin:0;
+    letter-spacing:0.01em;
+  }
+  .dept-head .n{
+    font-size:13px;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .dept-head.leadership{
+    border-left:none;
+    background:var(--navy);
+    padding:10px 16px;
+    border-radius:4px;
+  }
+  .dept-head.leadership h2{
+    color:var(--white);
+  }
+  .dept-head.leadership .n{
+    color:var(--blue-paler);
+  }
+
+  .rows{
+    border-top:1px solid var(--line);
+  }
+  .row{
+    display:grid;
+    grid-template-columns: 1.6fr 1.6fr 80px;
+    gap:16px;
+    align-items:center;
+    padding:12px 4px;
+    border-bottom:1px solid var(--line);
+    transition:background 0.12s ease;
+  }
+  .row:hover{
+    background:var(--blue-faint);
+  }
+  .row .name{
+    font-weight:600;
+    color:var(--ink);
+  }
+  .row .email{
+    font-size:14px;
+    color:var(--blue-dark);
+    text-decoration:none;
+    word-break:break-all;
+  }
+  .row .email:hover{
+    text-decoration:underline;
+  }
+  .row .ext{
+    font-size:14px;
+    color:var(--ink-soft);
+    text-align:right;
+    font-variant-numeric:tabular-nums;
+    font-weight:600;
+  }
+  .row .ext.none{
+    color:var(--blue-paler);
+    font-weight:400;
+  }
+
+  .empty-state{
+    display:none;
+    padding:60px 0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-weight:600;
+    font-size:18px;
+  }
+
+  footer.foot{
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+
+  @media (max-width: 620px){
+    header.masthead{padding:40px 20px 32px;}
+    .blocks{width:100px;}
+    .row{
+      grid-template-columns: 1fr;
+      gap:2px;
+      padding:14px 4px;
+    }
+    .row .ext{
+      text-align:left;
+      color:var(--ink-soft);
+    }
+    .row .ext::before{
+      content:"Ext. ";
+    }
+    .row .ext.none::before{
+      content:"";
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" style="padding-left:0;padding-right:0;">
+
+  <header class="masthead">
+    <div class="blocks">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+    <div class="mast-inner">
+      <div class="eyebrow-row">
+        <span class="kicker">GRUPO ULICORI-PLERUS</span>
+        <span class="count" id="resultCount"></span>
+      </div>
+      <h1>Directorio de contactos</h1>
+      <p class="subtitle">Personal, docentes y equipo Plerus. Buscá por nombre, departamento o correo, o saltá directo a una sección.</p>
+    </div>
+  </header>
+
+  <div style="padding:0 24px;">
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Buscar por nombre, departamento o correo..." autocomplete="off">
+  </div>
+
+  <nav class="jumplinks" id="jumplinks"></nav>
+
+  <div id="directory"></div>
+
+  <div class="empty-state" id="emptyState">No se encontraron resultados.</div>
+
+  <footer class="foot">Grupo ULICORI-PLERUS · ULICORI · Plerus</footer>
+  </div>
+</div>
+
+<script>
+const data = [
+["Joseline Agüero Fonseca","Talento Humano","jaguero@ulicori.ac.cr","2121"],
+["Carlos Luis Alcocer Gutiérrez","Experiencia Estudiantil","calcocer@ulicori.ac.cr","2408"],
+["María Fernanda Alvarado Ramírez","Admisiones","malvarado@ulicori.ac.cr","2116"],
+["Cristofer Abraham Álvarez Morales","Servicios Generales","calvarez@ulicori.ac.cr",null],
+["Yalicxa Aragón Gómez","Experiencia Estudiantil","yaragon@ulicori.ac.cr","2139"],
+["Kendall Barrantes Quirós","Tecnología","kbarrantes@ulicori.ac.cr","2148"],
+["Miriam Beita Solís","Servicios Generales","mbeita@ulicori.ac.cr",null],
+["Rodolfo Bryan Calweel","Servicios Generales","rbryan@ulicori.ac.cr",null],
+["Roany Cabalceta Morales","Experiencia Estudiantil","rcabalceta@ulicori.ac.cr","2409"],
+["Carolina Calderón Ballestero","Academia","ccalderon@ulicori.ac.cr","2021"],
+["Valeria Campos López","Experiencia Estudiantil","vcampos@ulicori.ac.cr","2131"],
+["Neimy María Campos Tencio","Servicios Generales","ncampos@ulicori.ac.cr",null],
+["Carlos Castillo Casorla","Financiero","ccastillo@ulicori.ac.cr","2108"],
+["Soveida Castrillo Osorio","Admisiones","scastrillo@ulicori.ac.cr","2124"],
+["Mauricio Castro León","Servicios Generales","mcastro@ulicori.ac.cr",null],
+["Aminta María Castro Ruiz","Experiencia Estudiantil","acastro@ulicori.ac.cr","2110"],
+["Joselyn Edith Ceciliano Suazo","Experiencia Estudiantil","jceciliano@ulicori.ac.cr","2602"],
+["Yuliana Cerdas Pérez","Registro","ycerdas@ulicori.ac.cr","2150"],
+["Walter Durán Ampié","Financiero","wduran@ulicori.ac.cr","2132"],
+["Erick Fallas Vargas","Financiero","efallas@ulicori.ac.cr","2128"],
+["Dylan Antonio Fernández Araya","Financiero","dfernandez@ulicori.ac.cr","2138"],
+["Thais Fonseca Ureña","Academia","tfonseca@ulicori.ac.cr","2004"],
+["Emanuel García Muñoz","Admisiones","egarcia@ulicori.ac.cr","2601"],
+["Jonathan Garita Fonseca","Tecnología","jgarita@ulicori.ac.cr","2507"],
+["Andony Enrique Gómez Chacón","Academia","agomez@ulicori.ac.cr","2126"],
+["Kerrelyn Hanson Clayton","Coordinadora de sede","khanson@ulicori.ac.cr","2604"],
+["Michel Herrera Cantillo","Admisiones","mherra@ulicori.ac.cr","2118"],
+["Darling Fabiola Jara Brenes","Experiencia Estudiantil","fjara@ulicori.ac.cr","2104"],
+["Cristopher Juárez Núñez","Admisiones","cjuarez@ulicori.ac.cr","2603"],
+["Vera León Bolívar","Academia","vleon@ulicori.ac.cr","2006"],
+["John Steven Lindo Valverde","Admisiones","slindo@ulicori.ac.cr","2176"],
+["Brenda Cristina Loría Loaiza","Academia","bloria@ulicori.ac.cr","2136"],
+["Roy Loza Varela","Academia","rloza@ulicori.ac.cr","2008"],
+["Nathan Madrigal Céspedes","Tecnología","nmadrigal@ulicori.ac.cr","2147"],
+["Yeilin Dayana Mata Fallas","Admisiones","ymata@ulicori.ac.cr","2508"],
+["Roxana Montero Carvajal","Academia","rmontero@ulicori.ac.cr","2105"],
+["Laura Mora Zumbado","Financiero","lmora@ulicori.ac.cr","2137"],
+["José Carlo Murillo Jiménez","Academia","jmurillo@ulicori.ac.cr","2156"],
+["Catalina Navarro Solano","Admisiones","cnavarro@ulicori.ac.cr","2501"],
+["Brandon Josué Ocampo Ramírez","Experiencia Estudiantil","bocampo@ulicori.ac.cr","2149"],
+["Rocío Orozco Chavarría","Academia","rorozco@ulicori.ac.cr","2005"],
+["Kimberly Marcela Orozco Jiménez","Servicios Generales","korozco@ulicori.ac.cr",null],
+["Keinith Ortiz Guevara","Coordinadora de sede","kortiz@ulicori.ac.cr","2404"],
+["Verónica Ovares Arias","Experiencia Estudiantil","vovares@ulicori.ac.cr","2009"],
+["Kembly Palacios Álvarez","Financiero","kpalacios@ulicori.ac.cr","2109"],
+["Angelita Paniagua Soto","Registro","apaniagua@ulicori.ac.cr","2133"],
+["Bryan Pernella Collado","Academia","bpernella@ulicori.ac.cr","2125"],
+["Jonathan Picado Rubí","Proveeduría","jpicado@ulicori.ac.cr","2134"],
+["Alexander Porras Campos","Admisiones","aporras@ulicori.ac.cr","2114"],
+["Christian Quesada Corrales","Academia","cquesada@ulicori.ac.cr","2010"],
+["Kristel Quirós Sanabria","Academia","kquiros@ulicori.ac.cr","2117"],
+["Laura Ramírez Saborío","Rectoría","lramirez@ulicori.ac.cr","2173"],
+["Johanna Ramírez Valverde","Inteligencia","jramirez@ulicori.ac.cr","2130"],
+["Emerson Rivera Montoya","Financiero","erivera@ulicori.ac.cr","2140"],
+["Luis Faustino Rojas Rivas","Academia","lrojas@ulicori.ac.cr","2003"],
+["María Fernanda Ruiz Díaz","Admisiones","mruiz@ulicori.ac.cr","2402"],
+["Marcela Sanabria Elizondo","Operaciones","masanabria@ulicori.ac.cr","2002"],
+["Silvia Sanabria Núñez","Experiencia Estudiantil","ssanabria@ulicori.ac.cr","2119"],
+["Francine María Sánchez Garro","Academia","fsanchez@ulicori.ac.cr","2210"],
+["Nayarit Sánchez Obando","Admisiones","nsanchez@ulicori.ac.cr","2152"],
+["Carlos Andrés Segura Hernández","Experiencia Estudiantil","csegura@ulicori.ac.cr","2503"],
+["José Ignacio Slon Roblero","Gerente","jslon@ulicori.ac.cr","2016"],
+["Aarón Josué Solano D Avanzo","Servicios Generales","asolano@ulicori.ac.cr",null],
+["Katherine Solano Guillén","Financiero","ksolano@ulicori.ac.cr","2135"],
+["Alcides Solís Delgado","Servicios Generales","asolis@ulicori.ac.cr",null],
+["Axel Mariano Soto García","Admisiones","asoto@ulicori.ac.cr","2127"],
+["Yoselyn Suárez Baltodano","Experiencia Estudiantil","ysuarezb@ulicori.ac.cr","2605"],
+["Cristóbal Toval Montes","Servicios Generales","ctoval@ulicori.ac.cr",null],
+["Melany Umaña Hernández","Servicios Generales","mumana@ulicori.ac.cr",null],
+["Esmirna Valerín Valladares","Academia","evalerin@ulicori.ac.cr","2141"],
+["Paola Valladares Sánchez","Registro","pvalladares@ulicori.ac.cr","2103"],
+["Karen Valle Vásquez","Experiencia Estudiantil","kvalle@ulicori.ac.cr","2406"],
+["Ashley Vargas Rodríguez","Registro","avargas@ulicori.ac.cr","2107"],
+["Ana Raquel Vargas Rojas","Coordinadora de sede","rvargas@ulicori.ac.cr","2502"],
+["Elieth Vásquez López","Financiero","evasquezl@ulicori.ac.cr","2112"],
+["Einer Alberto Vega Navas","Experiencia Estudiantil","evega@ulicori.ac.cr","2411"],
+["Marlon Vega Quesada","Servicios Generales","mvega@ulicori.ac.cr",null],
+["Daniel Vega Quirós","Academia","dvega@ulicori.ac.cr","2101"],
+["José Felipe Venegas Chavarría","Mercadeo","fvenegas@ulicori.ac.cr","2111"],
+["José Ricardo Zamora Acuña","Comunicación","jzamora@ulicori.ac.cr","2151"],
+["Freddy Zumbado Kleiman","Admisiones","fzumbado@ulicori.ac.cr","2123"],
+["Angelyn Fabiola Díaz Díaz","Docente","adiaz@ulicori.ac.cr","2410"],
+["Andrea Susana Roper Martínez","Docente","aroper@ulicori.ac.cr","2160"],
+["Karen Rojas Sánchez","Docente","krojas@ulicori.ac.cr","2606"],
+["Lucrecia Zúñiga Montero","Docente","lzuniga@ulicori.ac.cr","2504"],
+["Luis Alberto Segura Jiménez","Docente","lseguraj@ulicori.net","2011"],
+["Andrey Ramírez Sánchez","Tecnología","aramirez@ulicori.ac.cr","2607"],
+["Rudy Rojas Toruño","Tecnología","rrojas@ulicori.ac.cr","2142"],
+["Carlos Hernán Obando Jiménez","Talento Humano","cobando@ulicori.ac.cr","2145"],
+["Kathleen Hernández Chaves","Talento Humano","khernandez@ulicori.ac.cr","2129"],
+["Jessica Araya Roda","Plerus","jaraya@plerus.ac.cr","2202"],
+["Mauricio Bucardo Martínez","Plerus","mbucardo@plerus.ac.cr","2207"],
+["María de los Ángeles Leiva Friedman","Plerus","mleiva@plerus.ac.cr","2167"],
+["Rafael Marín Solís","Plerus","rmarin@plerus.ac.cr","2204"],
+["Cindy Milady Orozco Araya","Plerus","corozco@plerus.ac.cr","2208"],
+["Mónica Rojas Jiménez","Plerus","mrojas@plerus.ac.cr","2168"],
+["Héctor Alonso Sandi Saborío","Vicerrectoría","hsandi@plerus.ac.cr","2201"]
+].map(r => ({name:r[0], dept:r[1], email:r[2], ext:r[3]}));
+
+// group by department
+const depts = {};
+data.forEach(p => {
+  if(!depts[p.dept]) depts[p.dept] = [];
+  depts[p.dept].push(p);
+});
+const leadershipOrder = ['Rectoría','Vicerrectoría'];
+const deptNames = Object.keys(depts).sort((a,b)=>a.localeCompare(b,'es'));
+deptNames.forEach(d => depts[d].sort((a,b)=>a.name.localeCompare(b.name,'es')));
+// leadership departments (Rectoría, Vicerrectoría) always lead the list
+deptNames.sort((a,b) => {
+  const ai = leadershipOrder.indexOf(a);
+  const bi = leadershipOrder.indexOf(b);
+  if(ai !== -1 && bi !== -1) return ai - bi;
+  if(ai !== -1) return -1;
+  if(bi !== -1) return 1;
+  return a.localeCompare(b,'es');
+});
+
+function slug(s){
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-');
+}
+
+const jumplinks = document.getElementById('jumplinks');
+deptNames.forEach((d,i) => {
+  const a = document.createElement('a');
+  a.href = '#' + slug(d);
+  a.textContent = d;
+  jumplinks.appendChild(a);
+  if(i < deptNames.length - 1){
+    const sep = document.createElement('span');
+    sep.className = 'sep';
+    sep.textContent = '·';
+    jumplinks.appendChild(sep);
+  }
+});
+
+const dirEl = document.getElementById('directory');
+
+function render(filter){
+  dirEl.innerHTML = '';
+  let total = 0;
+  let matches = 0;
+
+  deptNames.forEach(d => {
+    const people = depts[d];
+    total += people.length;
+    const filtered = filter
+      ? people.filter(p =>
+          p.name.toLowerCase().includes(filter) ||
+          p.dept.toLowerCase().includes(filter) ||
+          p.email.toLowerCase().includes(filter))
+      : people;
+
+    if(filtered.length === 0) return;
+    matches += filtered.length;
+
+    const section = document.createElement('section');
+    section.className = 'dept';
+    section.id = slug(d);
+
+    const head = document.createElement('div');
+    head.className = 'dept-head' + (leadershipOrder.includes(d) ? ' leadership' : '');
+    head.innerHTML = `<h2>${d}</h2><span class="n">${filtered.length}</span>`;
+    section.appendChild(head);
+
+    const rows = document.createElement('div');
+    rows.className = 'rows';
+    filtered.forEach(p => {
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML = `
+        <span class="name">${p.name}</span>
+        <a class="email" href="mailto:${p.email}">${p.email}</a>
+        <span class="ext ${p.ext ? '' : 'none'}">${p.ext ? p.ext : '—'}</span>
+      `;
+      rows.appendChild(row);
+    });
+    section.appendChild(rows);
+    dirEl.appendChild(section);
+  });
+
+  document.getElementById('resultCount').textContent = filter
+    ? `${matches} de ${total} contactos`
+    : `${total} contactos`;
+  document.getElementById('emptyState').style.display = matches === 0 ? 'block' : 'none';
+  document.getElementById('jumplinks').style.display = filter ? 'none' : 'flex';
+}
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  render(e.target.value.trim().toLowerCase());
+});
+
+render('');
+</script>
+</body>
+</html>
